@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Love Story | Salina ❤️</title>
+  <meta name="description" content="A romantic interactive love-story website dedicated to Salina." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Manrope:wght@300;400;500;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-heart">❤️</div>
+    <p>Loading our forever...</p>
+  </div>
+
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <div id="floatingHearts" aria-hidden="true"></div>
+
+  <button class="control-btn music-btn" id="musicToggle" aria-label="Toggle background music">🎵 Music Off</button>
+  <button class="control-btn surprise-btn" id="surpriseNow" aria-label="Open surprise message">💌 Surprise</button>
+
+  <!-- 1) Landing / Hero -->
+  <header class="hero section reveal" id="home">
+    <nav class="nav glass">
+      <h2 class="brand">S + P</h2>
+      <ul>
+        <li><a href="#love-story">Story</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#letter">Letter</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-card glass tilt-card">
+      <p class="kicker">A Romantic Digital Universe</p>
+      <h1>I Love You Salina ❤️</h1>
+      <p class="typed-line" id="typedMessage"></p>
+      <p class="hero-subtext">Every second with you turns into a memory my heart wants to replay forever.</p>
+      <button class="primary-btn" id="startJourney">Start Our Journey</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2) Love Story Timeline -->
+    <section class="section reveal" id="love-story">
+      <div class="section-heading">
+        <h2>📖 Our Love Story Timeline</h2>
+        <p>Five chapters, one forever feeling.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-card glass tilt-card">
+          <h3>First Meet</h3>
+          <p>The day fate smiled and introduced me to your beautiful soul.</p>
+        </article>
+        <article class="timeline-card glass tilt-card">
+          <h3>First Talk</h3>
+          <p>Simple words, but they felt like music I wanted to hear every day.</p>
+        </article>
+        <article class="timeline-card glass tilt-card">
+          <h3>First Impression</h3>
+          <p>You were warmth, grace, and light all at once. I knew you were special.</p>
+        </article>
+        <article class="timeline-card glass tilt-card">
+          <h3>First Date</h3>
+          <p>Time moved quickly, but my feelings for you slowed into something deep.</p>
+        </article>
+        <article class="timeline-card glass tilt-card">
+          <h3>Special Memories</h3>
+          <p>From laughs to silence, every moment with you feels meaningful.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3) About Salina -->
+    <section class="section reveal" id="about-salina">
+      <div class="section-heading">
+        <h2>💌 About You, Salina</h2>
+        <p>What makes you unforgettable.</p>
+      </div>
+      <div class="qualities-grid">
+        <article class="quality-card glass tilt-card">
+          <h3>Your Heart</h3>
+          <p>Kind, caring, and full of love that makes everything feel safe.</p>
+          <button class="reveal-btn" data-message="Your kindness makes my world softer and brighter every day.">Reveal Hidden Note</button>
+        </article>
+        <article class="quality-card glass tilt-card">
+          <h3>Your Smile</h3>
+          <p>It turns ordinary days into precious memories.</p>
+          <button class="reveal-btn" data-message="When you smile, my worries disappear in a second.">Reveal Hidden Note</button>
+        </article>
+        <article class="quality-card glass tilt-card">
+          <h3>Your Strength</h3>
+          <p>You inspire me to be better and dream bigger.</p>
+          <button class="reveal-btn" data-message="You are the strongest and most graceful person I know.">Reveal Hidden Note</button>
+        </article>
+      </div>
+      <div class="hidden-note-box glass" id="hiddenNoteBox">Click a hidden note button to reveal a love message.</div>
+    </section>
+
+    <!-- 4) Memory Gallery -->
+    <section class="section reveal" id="memory-gallery">
+      <div class="section-heading">
+        <h2>🎥 Memory Gallery</h2>
+        <p>Moments that live forever in my heart.</p>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item tilt-card" data-message="This memory reminds me how lucky I am to have you.">✨ First Laugh</button>
+        <button class="gallery-item tilt-card" data-message="The way you looked at me here still melts my heart.">🌙 Night Walk</button>
+        <button class="gallery-item tilt-card" data-message="A simple moment, but one of my all-time favorites.">☕ Cozy Date</button>
+        <button class="gallery-item tilt-card" data-message="Every adventure with you feels like home.">🚗 Road Trip</button>
+        <button class="gallery-item tilt-card" data-message="This day felt magical because you were with me.">🌸 Spring Day</button>
+        <button class="gallery-item tilt-card" data-message="No filter needed. You were the most beautiful view.">📸 Perfect Snapshot</button>
+      </div>
+    </section>
+
+    <!-- 5) Love Meter -->
+    <section class="section reveal" id="love-meter">
+      <div class="section-heading">
+        <h2>❤️ Love Meter</h2>
+        <p>My love for you has no limits.</p>
+      </div>
+      <div class="meter-wrap glass tilt-card">
+        <div class="meter-ring">
+          <div class="meter-fill" id="meterFill"></div>
+          <div class="meter-text" id="meterText">0%</div>
+        </div>
+        <p class="meter-caption">My love for you is infinite <span class="infinity">∞%</span></p>
+      </div>
+    </section>
+
+    <!-- 6) 50 Romantic Questions -->
+    <section class="section reveal" id="questions">
+      <div class="section-heading">
+        <h2>❓ 50 Romantic Questions</h2>
+        <p>One question at a time, one heartbeat at a time.</p>
+      </div>
+      <div class="quiz-card glass">
+        <p class="quiz-progress" id="quizProgress">Question 1 / 50</p>
+        <h3 id="quizQuestion">Loading question...</h3>
+        <div class="options" id="quizOptions"></div>
+        <button class="primary-btn" id="nextQuestionBtn" disabled>Next Question</button>
+        <div class="quiz-result" id="quizResult"></div>
+      </div>
+    </section>
+
+    <!-- 7) Romantic Games -->
+    <section class="section reveal" id="games">
+      <div class="section-heading">
+        <h2>🎮 Romantic Game Zone</h2>
+        <p>Love, laughter, and playful moments.</p>
+      </div>
+
+      <div class="games-grid">
+        <article class="game-card glass tilt-card" id="miniQuizGame">
+          <h3>💋 Game 1: Love Quiz Game</h3>
+          <p id="miniQuizPrompt">Press start to test our romantic sync.</p>
+          <div class="mini-options" id="miniQuizOptions"></div>
+          <button class="primary-btn" id="miniQuizStart">Start Love Quiz</button>
+          <p class="game-feedback" id="miniQuizFeedback"></p>
+        </article>
+
+        <article class="game-card glass tilt-card" id="loveCalculatorGame">
+          <h3>💖 Game 2: Love Calculator</h3>
+          <label for="nameOne">Name 1</label>
+          <input id="nameOne" type="text" placeholder="Your name" autocomplete="name" />
+          <label for="nameTwo">Name 2</label>
+          <input id="nameTwo" type="text" placeholder="Salina" value="Salina" autocomplete="name" />
+          <button class="primary-btn" id="calcLoveBtn" type="button">Calculate Love</button>
+          <p class="game-feedback" id="calcResult">Enter names and discover your love destiny.</p>
+        </article>
+
+        <article class="game-card glass tilt-card" id="catchHeartGame">
+          <h3>💞 Game 3: Catch The Heart</h3>
+          <p>Catch as many hearts as you can in 20 seconds.</p>
+          <div class="catch-score">Score: <span id="catchScore">0</span> | Time: <span id="catchTime">20</span>s</div>
+          <div class="catch-area" id="catchArea">
+            <button class="catch-heart" id="catchHeart" aria-label="Catch heart">❤️</button>
+          </div>
+          <button class="primary-btn" id="catchStart">Start Catch Game</button>
+          <p class="game-feedback" id="catchFeedback"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8) Favorites -->
+    <section class="section reveal" id="favorites">
+      <div class="section-heading">
+        <h2>🍔 Our Favorites</h2>
+        <p>Little details that make our world ours.</p>
+      </div>
+      <div class="favorites-grid">
+        <article class="fav-card glass tilt-card"><h3>Favorite Food</h3><p>Momo + dessert dates</p></article>
+        <article class="fav-card glass tilt-card"><h3>Favorite Song</h3><p>Any song that feels like us</p></article>
+        <article class="fav-card glass tilt-card"><h3>Favorite Place</h3><p>Wherever we are together</p></article>
+        <article class="fav-card glass tilt-card"><h3>Favorite Activity</h3><p>Long talks and random adventures</p></article>
+        <article class="fav-card glass tilt-card"><h3>Favorite Dance</h3><p>Slow dance under city lights</p></article>
+      </div>
+    </section>
+
+    <!-- 9) Future Dreams -->
+    <section class="section reveal" id="future-dreams">
+      <div class="section-heading">
+        <h2>💍 Future Dreams</h2>
+        <p>Our forever plans.</p>
+      </div>
+      <div class="dreams-wrap">
+        <article class="dream-card glass tilt-card">
+          <h3>Travel Goals</h3>
+          <p>Watching sunsets in new cities and collecting stories from every place we visit.</p>
+        </article>
+        <article class="dream-card glass tilt-card">
+          <h3>Life Goals Together</h3>
+          <p>Build a life full of love, respect, laughter, and calm moments that feel like home.</p>
+        </article>
+        <article class="dream-card glass tilt-card">
+          <h3>Dream Future Message</h3>
+          <p>I will keep choosing you, supporting you, and loving you in every chapter of life.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 10) Final Love Letter -->
+    <section class="section reveal" id="letter">
+      <div class="section-heading">
+        <h2>💌 Final Love Letter</h2>
+      </div>
+      <article class="letter glass tilt-card">
+        <p>
+          Salina, you are the most beautiful part of my story. Thank you for your love, your patience,
+          your smile, and every tiny moment that made us stronger. This website is only a small reflection
+          of what I feel for you. In this life and every life after, I want to keep holding your hand,
+          chasing dreams with you, and loving you with all my heart.
+        </p>
+        <h3>I love you forever Salina ❤️</h3>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made with infinite love for Salina • Forever & Always ❤️</p>
+  </footer>
+
+  <div class="modal" id="messageModal" aria-hidden="true">
+    <div class="modal-content glass">
+      <button class="close-modal" id="closeModal" aria-label="Close message">×</button>
+      <p id="modalMessage">You are my favorite hello and hardest goodbye.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="surpriseModal" aria-hidden="true">
+    <div class="modal-content glass">
+      <button class="close-modal" id="closeSurprise" aria-label="Close surprise">×</button>
+      <h3>Surprise for You, Salina 💖</h3>
+      <p>You are the best thing that ever happened to me. Thank you for existing in my life.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
